@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'react-select/dist/react-select.css';
-import Nav from '../navigation';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import Full from '../pages/full';
-import Short from '../pages/short';
-import Today from '../pages/today';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import SixteenDays from '../pages/sixteen-days';
+import FiveDays from '../pages/five-days';
+import CurrentDay from '../pages/current-day';
+import { pageConnector } from '../../connector';
 
-const cityByDefault = 'kharkiv';
-
-const Content = () => {
-  return (
-      <div>
-          <Nav/>
-          <Switch>
-              <Route path="/:city/16days" component={ Full }/>
-              <Route path="/:city/5days" component={ Short }/>
-              <Route path="/:city/today" component={ Today }/>
-              <Redirect to={`/${cityByDefault}/16days`}/>
-          </Switch>
-      </div>
-  );
+const Content = ({ selectedCity, selectedView, match, history }) => {
+    return (
+        <Switch>
+            <Route path="/:city/16days" component={ pageConnector(SixteenDays) }/>
+            <Route path="/:city/5days" component={ pageConnector(FiveDays) }/>
+            <Route path="/:city/today" component={ pageConnector(CurrentDay) }/>
+            <Redirect to={`/${selectedCity}/${selectedView}`}/>
+        </Switch>
+    );
 };
 
 Content.propTypes = {};

@@ -1,28 +1,34 @@
-// import * as constants from '../actions/constants';
+import * as constants from '../actions/constants';
 import { fromJS } from 'immutable';
 
 const initialState = fromJS({
     isFetching: false,
     isError: false,
     errorMessage: null,
-    selectedCity: null,
+    selectedCity: 'kharkiv',
+    selectedView: '16days'
 });
 
 export const common = (state = initialState, action) => {
     const { type, payload } = action;
 
     switch(type) {
-        case 'SIXTEEN_DATA_REQUEST':
+        case constants.SIXTEEN_DATA_REQUEST:
             return state.set('isFetching', true);
-        case 'SIXTEEN_DATA_FAILURE':
+
+        case constants.SIXTEEN_DATA_FAILURE:
             return state.set('isError', true)
                 .set('errorMessage', payload)
                 .set('isFetching', false);
-        case 'SIXTEEN_DATA_RESPONSE':
+
+        case constants.SIXTEEN_DATA_RESPONSE:
             return state.set('isFetching', false);
 
-        case 'CITY_SELECT':
+        case constants.CITY_SELECT:
             return state.set('selectedCity', payload);
+
+        case constants.VIEW_SELECT:
+            return state.set('selectedView', payload);
 
         default:
             return state;

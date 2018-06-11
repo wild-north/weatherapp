@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Short = () => {
+const FiveDays = () => {
   return (
       <div>
           <p>SHORT CONTENT (5 days)</p>
@@ -9,7 +9,7 @@ const Short = () => {
   );
 };
 
-Short.propTypes = {};
-Short.displayName = "5Days";
+FiveDays.propTypes = {};
+FiveDays.displayName = "FiveDays";
 
-export default Short;
+export default FiveDays;

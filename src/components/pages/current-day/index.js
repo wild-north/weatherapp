@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Today = () => {
+const CurrentDay = () => {
   return (
       <div>
           <p>Today's CONTENT</p>
@@ -9,7 +9,7 @@ const Today = () => {
   );
 };
 
-Today.propTypes = {};
-Today.displayName = "Today";
+CurrentDay.propTypes = {};
+CurrentDay.displayName = "CurrentDay";
 
-export default Today;
+export default CurrentDay;
